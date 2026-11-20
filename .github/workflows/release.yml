@@ -6,6 +6,7 @@ on:
       version:
         description: 'Version tag (contoh: v1.0.0)'
         required: true
+        default: 'v1.0.0'
 
 permissions:
   contents: write
@@ -35,19 +36,24 @@ jobs:
       - name: Generate launcher icons
         run: dart run flutter_launcher_icons
 
-      - name: Build release APK
-        run: flutter build apk --release
-
-      - name: Rename APK
+      - name: Build release APK (arm64 + armeabi)
         run: |
-          mv build/app/outputs/flutter-apk/app-release.apk \
-             build/app/outputs/flutter-apk/vokra-${{ github.event.inputs.version }}.apk
+          flutter build apk --release \
+            --target-platform android-arm64,android-arm
+
+      - name: Rename APKs
+        run: |
+          cd build/app/outputs/flutter-apk/
+          mv app-arm64-v8a-release.apk vokra-${{ github.event.inputs.version }}-arm64-v8a.apk
+          mv app-armeabi-v7a-release.apk vokra-${{ github.event.inputs.version }}-armeabi-v7a.apk
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.event.inputs.version }}
           name: Vokra ${{ github.event.inputs.version }}
-          files: build/app/outputs/flutter-apk/vokra-${{ github.event.inputs.version }}.apk
+          files: |
+            build/app/outputs/flutter-apk/vokra-${{ github.event.inputs.version }}-arm64-v8a.apk
+            build/app/outputs/flutter-apk/vokra-${{ github.event.inputs.version }}-armeabi-v7a.apk
           draft: false
           prerelease: false
