@@ -36,10 +36,9 @@ jobs:
       - name: Generate launcher icons
         run: dart run flutter_launcher_icons
 
-      - name: Build release APK (arm64 + armeabi)
+      - name: Build release APK (split abi)
         run: |
-          flutter build apk --release \
-            --target-platform android-arm64,android-arm
+          flutter build apk --release --split-per-abi --target-platform android-arm64,android-arm
 
       - name: Rename APKs
         run: |
