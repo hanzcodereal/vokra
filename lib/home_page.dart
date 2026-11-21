@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: VokraTheme.canvas,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(24, 32, 24, 0),
+          padding: const EdgeInsets.fromLTRB(24, 32, 24, 32),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -55,21 +55,7 @@ class HomePage extends StatelessWidget {
                 '- SSID, gateway, dan panel diagnostik lokal.',
                 style: VokraTheme.bodyMd,
               ),
-              const SizedBox(height: 16),
-              Row(
-                children: [
-                  Text('V1.0.0', style: VokraTheme.captionUpper),
-                  const SizedBox(width: 10),
-                  Container(
-                    width: 4, height: 4,
-                    decoration: const BoxDecoration(
-                      color: VokraTheme.muted, shape: BoxShape.circle,
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Text('HANZ DEV OFFICIAL', style: VokraTheme.captionUpper),
-                ],
-              ),
+              // Baris V1.0.0 & HANZ DEV sudah dihapus dari sini
               const SizedBox(height: 28),
 
               // Feature cards
@@ -116,51 +102,7 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 28),
-
-              // Footer
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.symmetric(horizontal: -24),
-                color: VokraTheme.surfaceDark,
-                padding: const EdgeInsets.fromLTRB(24, 28, 24, 28),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
-                          child: Image.asset(
-                            'assets/logo.png',
-                            width: 20, height: 20, fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => const Icon(
-                              Icons.radar,
-                              size: 20, color: VokraTheme.onDark,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Text('HANZ DEV OFFICIAL',
-                            style: VokraTheme.titleSm
-                                .copyWith(color: VokraTheme.onDark)),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    Text('hanzzcodee@gmail.com',
-                        style: VokraTheme.bodySm
-                            .copyWith(color: VokraTheme.onDarkSoft)),
-                    const SizedBox(height: 4),
-                    Text('saweria.co/hanzreally',
-                        style: VokraTheme.bodySm
-                            .copyWith(color: VokraTheme.onDarkSoft)),
-                    const SizedBox(height: 16),
-                    Text('(c) 2026 VOKRA - V1.0.0',
-                        style: VokraTheme.caption
-                            .copyWith(color: VokraTheme.onDarkSoft)),
-                  ],
-                ),
-              ),
+              // Footer HANZ DEV OFFICIAL sudah dihapus dari sini
             ],
           ),
         ),
